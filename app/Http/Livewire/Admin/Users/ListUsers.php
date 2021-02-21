@@ -3,22 +3,17 @@
 namespace App\Http\Livewire\Admin\Users;
 
 use App\Models\User;
-use Illuminate\Support\Facades\Validator;
 use Livewire\Component;
 
 class ListUsers extends Component
 {
-
-    //array of date form
-   // public $state = [];
-
     public $name;
     public $email;
     public $password;
 
     public function updated($rules)
     {
-        $this->validateOnly($rules,[ // real-time
+        $this->validateOnly($rules, [ // real-time
 
             'name' => 'required',
             'email' => 'required|email|unique:users',
@@ -28,7 +23,7 @@ class ListUsers extends Component
     }
     public function createUser()
     {
-       $data = $this->validate([
+        $data = $this->validate([
 
             'name' => 'required', // server-time
             'email' => 'required|email|unique:users',

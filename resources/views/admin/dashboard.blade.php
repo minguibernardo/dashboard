@@ -28,7 +28,7 @@
                             <div class="card-body">
                                 <h6 class="card-title">Tudo feito do jeito Livewire</h6>
 
-                                <p class="card-text">A media que voce degitando o laviwire trabalhar no backoff fazendo request sempre
+                                <p class="card-text">A medida que vai degitando o laviwire trabalhar na back fazendo request sempre
                                 </p>
                                 <a href="{{route('admin.users') }}" class="btn btn-primary">Vai Agora</a>
                             </div>
