@@ -36,10 +36,11 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($users as $user)
                                     <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
+                                        <th scope="row">{{$loop->iteration}}</th>
+                                        <td>{{$user->name}}</td>
+                                        <td>{{$user->email}}</td>
                                         <td>
                                             <a href="" class="btn btn-sm btn-warning">
                                                 <i class="fa fa-edit"></i>
@@ -49,7 +50,7 @@
                                             </a>
                                         </td>
                                     </tr>
-
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -59,10 +60,10 @@
             <!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
-    <!-- /.content -->
+    <!-- /.content wire:ignore.self -->
 
 
-    <div class="modal fade" id="form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div wire:ignore.self class="modal fade" id="form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -72,22 +73,44 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <form>
+                <form autocomplete="off" wire:submit.prevent="createUser">
+                    <div class="modal-body">
                         <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Recipient:</label>
-                            <input type="text" class="form-control" id="recipient-name">
+                            <label for="name" class="col-form-label">Name:</label>
+                            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
+                                placeholder="Name" wire:model="name">
+                            @error('name')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <label for="message-text" class="col-form-label">Message:</label>
-                            <textarea class="form-control" id="message-text"></textarea>
+                            <label for="email" class="col-form-label">Email:</label>
+                            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="Email"
+                                wire:model="email">
+                            @error('email')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save</button>
-                </div>
+                        <div class="form-group">
+                            <label for="password" class="col-form-label">Password:</label>
+                            <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" placeholder="Password"
+                                wire:model="password">
+                            @error('password')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

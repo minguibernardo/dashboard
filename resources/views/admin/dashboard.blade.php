@@ -5,12 +5,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Starter Page1</h1>
+                        <h1 class="m-0">AdmINLTE 3 Simplified</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home1</a></li>
-                            <li class="breadcrumb-item active">Starter Page1</li>
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">AdmINLTE 3 Simplified</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -22,59 +22,53 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="card">
+                            <div class="card-header">
+                                <h5 class="m-0">Modal com formulario valida em tempo Real</h5>
+                            </div>
                             <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
+                                <h6 class="card-title">Tudo feito do jeito Livewire</h6>
 
-                                <p class="card-text">
-                                    Some quick example text to build on the card title and make up the bulk of the
-                                    card's
-                                    content.
+                                <p class="card-text">A media que voce degitando o laviwire trabalhar no backoff fazendo request sempre
                                 </p>
+                                <a href="{{route('admin.users') }}" class="btn btn-primary">Vai Agora</a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="m-0">Widgets</h5>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-title">Alguns Widgets do AdmiLT3</h6>
 
-                                <a href="#" class="card-link">Card link</a>
-                                <a href="#" class="card-link">Another link</a>
+                                <p class="card-text">Simplifiquei a quantidade de widgets trouxe so o necessario.</p>
+                                <a href="{{route('admin.widgets') }}" class="btn btn-primary">Vai Agora</a>
                             </div>
                         </div>
 
-                        <div class="card card-primary card-outline">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-
-                                <p class="card-text">
-                                    Some quick example text to build on the card title and make up the bulk of the
-                                    card's
-                                    content.
-                                </p>
-                                <a href="#" class="card-link">Card link</a>
-                                <a href="#" class="card-link">Another link</a>
-                            </div>
-                        </div><!-- /.card -->
                     </div>
                     <!-- /.col-md-6 -->
                     <div class="col-lg-6">
                         <div class="card">
                             <div class="card-header">
-                                <h5 class="m-0">Featured</h5>
+                                <h5 class="m-0">Graficos</h5>
                             </div>
                             <div class="card-body">
-                                <h6 class="card-title">Special title treatment</h6>
+                                <h6 class="card-title">Alguns Graficos do AdmiLT3</h6>
 
-                                <p class="card-text">With supporting text below as a natural lead-in to additional
-                                    content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                <p class="card-text">Simplifiquei a quantidade de graficos trouxe so o necessario.</p>
+                                <a href="{{route('admin.charts') }}" class="btn btn-primary">Vai Agora</a>
                             </div>
                         </div>
 
                         <div class="card card-primary card-outline">
                             <div class="card-header">
-                                <h5 class="m-0">Featured</h5>
+                                <h5 class="m-0">Forrms</h5>
                             </div>
                             <div class="card-body">
-                                <h6 class="card-title">Special title treatment</h6>
+                                <h6 class="card-title">Alguns Forms do AdmiLT3</h6>
 
-                                <p class="card-text">With supporting text below as a natural lead-in to additional
-                                    content.</p>
-                                <a href="#" class="btn btn-primary">Goaaa somewhere</a>
+                                <p class="card-text">Simplifiquei a quantidade de forms trouxe so o necessario.</p>
+                                <a href="{{route('admin.forms') }}" class="btn btn-primary">Vai Agora</a>
                             </div>
                         </div>
                     </div>
