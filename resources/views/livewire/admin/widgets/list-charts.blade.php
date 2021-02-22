@@ -1,3 +1,8 @@
+@push('charts-js')
+<script src="{{ asset('dashboard/plugins/chart.js/Chart.min.js') }}"></script>
+<script src="{{ asset('dashboard/dist/js/charts-ui.js') }}"></script>
+@endpush
+
 <div>
 
     <section class="content-header">

@@ -17,8 +17,15 @@
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>Dashboard</p>
                     </a>
-
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.formu') }}"
+                        class="nav-link {{ request()->is('admin/formu') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-edit"></i>
+                        <p>Advanced Form</p>
+                    </a>
+                </li>
+
                 <li class="nav-item">
                     <a href="{{ route('admin.users') }}"
                         class="nav-link {{ request()->is('admin/users') ? 'active' : ''}}">

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Livewire\Admin\Big\Formu;
 use App\Http\Livewire\Admin\Credit\About;
 use App\Http\Livewire\Admin\Users\ListUsers;
 use App\Http\Livewire\Admin\Widgets\ListCharts;
@@ -38,3 +39,5 @@ Route::get('admin/forms', ListForms::class)->name('admin.forms');
 Route::get('admin/tables', ListTables::class)->name('admin.tables');
 
 Route::get('admin/about', About::class)->name('admin.about');
+
+Route::get('admin/formu', Formu::class)->name('admin.formu');

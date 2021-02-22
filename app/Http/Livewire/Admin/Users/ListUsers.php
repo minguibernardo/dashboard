@@ -11,39 +11,108 @@ class ListUsers extends Component
     public $email;
     public $password;
 
-    public function updated($rules)
+    public $seeEditModal = false;
+    public $user;
+    public $removeID = null;
+
+    public function addUserOpenModal() //open modal
     {
-        $this->validateOnly($rules, [ // real-time
+        //
+        $this->seeEditModal = false;
 
-            'name' => 'required',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:6',
+        //blank
+        $this->name = '';
+        $this->email = '';
+        $this->password = '';
 
-        ]);
+        //capture event js of browser;
+        $this->dispatchBrowserEvent('show-form');
     }
-    public function createUser()
+
+    public function createUser() // save user
     {
         $data = $this->validate([
 
             'name' => 'required', // server-time
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
-
         ]);
 
         $data['password'] = hash('sha256', $data['password']);
 
+        $this->dispatchBrowserEvent('hidden-form'); //close modal
         User::create($data);
-        $this->dispatchBrowserEvent('hidden-form'); //capture event js of browser;
+        $this->dispatchBrowserEvent('alert-add'); //alert sweet 2
+        redirect()->back();
+    }
+
+    public function editUserOpenModal(User $user) //open modal
+    {
+        //
+        $this->seeEditModal = true;
+        $this->name = $user->name;
+        $this->email = $user->email;
+        $this->user = $user;
+
+        $this->dispatchBrowserEvent('show-form');
+    }
+
+    public function updateUser() //save edit
+    {
+        $data = $this->validate([
+            'name' => 'required', // server-time
+            'email' => 'required|email|unique:users,email,' . $this->user->id,
+            'password' => 'required|min:6',
+        ]);
+
+        if (!empty($data['password'])) {
+            $data['password'] = hash('sha256', $data['password']);
+        }
+
+        $this->dispatchBrowserEvent('hidden-form'); //close modal
+        $this->user->update($data);
+        $this->dispatchBrowserEvent('alert-update'); //alert sweet 2
 
         redirect()->back();
     }
 
-    public function addNew()
+    public function userDeleteOpenModal($userID) //open modal
+    {
+        $this->removeID = $userID;
+        $this->dispatchBrowserEvent('form-deleted');
+    }
+
+    public function userDelete()
     {
 
-        //capture event js of browser;
-        $this->dispatchBrowserEvent('show-form');
+        $user = User::findOrFail($this->removeID);
+
+        $this->dispatchBrowserEvent('hidden-modal-deleted'); //close modal
+        $user->delete();
+        $this->dispatchBrowserEvent('alert-deleted'); //alert sweet 2
+
+    }
+
+    public function updated($rules) // real-time validation
+    {
+
+        if ($this->user == null) {
+            $this->validateOnly($rules, [
+
+                'name' => 'required',
+                'email' => 'required|email',
+                'password' => 'required|min:6',
+
+            ]);
+        } else {
+            $this->validateOnly($rules, [
+
+                'name' => 'required',
+                'email' => 'required|email|unique:users,email,' . $this->user->id,
+                'password' => 'required|min:6',
+
+            ]);
+        }
     }
 
     public function render()
