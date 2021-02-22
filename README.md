@@ -1,2 +1,2 @@
-# dashboad
+# dashboard
  livewire
