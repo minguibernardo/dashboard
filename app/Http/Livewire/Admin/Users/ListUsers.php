@@ -15,6 +15,28 @@ class ListUsers extends Component
     public $user;
     public $removeID = null;
 
+    public function updated($rules) // real-time validation
+    {
+
+        if ($this->user == null) {
+            $this->validateOnly($rules, [
+
+                'name' => 'required',
+                'email' => 'required|email',
+                'password' => 'required|min:6',
+
+            ]);
+        } else {
+            $this->validateOnly($rules, [
+
+                'name' => 'required',
+                'email' => 'required|email|unique:users,email,' . $this->user->id,
+                'password' => 'required|min:6',
+
+            ]);
+        }
+    }
+
     public function addUserOpenModal() //open modal
     {
         //
@@ -91,28 +113,6 @@ class ListUsers extends Component
         $user->delete();
         $this->dispatchBrowserEvent('alert-deleted'); //alert sweet 2
 
-    }
-
-    public function updated($rules) // real-time validation
-    {
-
-        if ($this->user == null) {
-            $this->validateOnly($rules, [
-
-                'name' => 'required',
-                'email' => 'required|email',
-                'password' => 'required|min:6',
-
-            ]);
-        } else {
-            $this->validateOnly($rules, [
-
-                'name' => 'required',
-                'email' => 'required|email|unique:users,email,' . $this->user->id,
-                'password' => 'required|min:6',
-
-            ]);
-        }
     }
 
     public function render()
