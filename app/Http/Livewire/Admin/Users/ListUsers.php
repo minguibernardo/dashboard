@@ -112,7 +112,7 @@ class ListUsers extends Component
         $this->dispatchBrowserEvent('hidden-modal-deleted'); //close modal
         $user->delete();
         $this->dispatchBrowserEvent('alert-deleted'); //alert sweet 2
-
+        redirect()->back();
     }
 
     public function render()
